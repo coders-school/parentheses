@@ -65,4 +65,19 @@ SCENARIO("Parentheses", "[Parentheses]") {
             }
         }
     }
+
+    GIVEN("Parentheses, true implicate bracket") {
+    std::vector <std::string> input{"({})", "(<>)","({<>})"};
+    Parentheses p;
+
+        for(auto currentCase : input){
+            WHEN("isBalanced() is called") {
+                auto result = p.isBalanced(currentCase);
+
+                THEN("The result is true") {
+                    CHECK(result == true);
+                }
+            }
+        }
+    }
 }
