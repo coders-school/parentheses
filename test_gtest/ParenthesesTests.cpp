@@ -5,12 +5,89 @@
 TEST(ParenthesesTests, givenEmptyStringWhenIsBalancedIsCalledThenResultIsTrue)
 {
     // GIVEN
-    std::string input{};
+    std::string inputEmpty{};
     Parentheses p;
-
     // WHEN
-     auto result = p.isBalanced(input);
-
+     auto result = p.isBalanced(inputEmpty);
     // THEN
-    ASSERT_TRUE(result);
+     ASSERT_TRUE(result);   
+}
+
+TEST(ParenthesesTests, givenBasicPositivCasesWhenIsBalancedIsCalledThenResultIsTrue)
+{
+    // GIVEN
+    std::vector <std::string> inputBasicPositivCases {"", "()", "{}", "[]"}; 
+    Parentheses p;
+    // WHEN
+     for(auto currentCase : inputBasicPositivCases){
+        auto result = p.isBalanced(currentCase);
+    // THEN
+        ASSERT_TRUE(result);
+     }
+}
+
+TEST(ParenthesesTests, givenBasicPositivCasesWhenIsBalancedIsCalledThenResultIsFalse)
+{
+    // GIVEN
+    std::vector <std::string> inputBasicNegativCases {")(", "}{", "]["}; 
+    Parentheses p;
+    // WHEN
+     for(auto currentCase : inputBasicNegativCases){
+        auto result = p.isBalanced(currentCase);
+    // THEN
+        ASSERT_FALSE(result);
+     }
+}
+
+TEST(ParenthesesTests, givenMixedTypePositiveCasesWhenIsBalancedIsCalledThenResultIsTrue)
+{
+    // GIVEN
+    std::vector <std::string> inputMixedTypePositive {"()[]", "{}[]", "{}()"};
+    Parentheses p;
+    // WHEN
+    for(auto currentCase : inputMixedTypePositive){
+        auto result = p.isBalanced(currentCase);
+    // THEN
+        ASSERT_TRUE(result);
+    }
+}
+
+TEST(ParenthesesTests, givenMixedTypePositiveCasesWhenIsBalancedIsCalledThenResultIsFalse)
+{
+    // GIVEN
+    std::vector <std::string> inputMixedTypeNegative {"()][", "}{[]", "(}"};
+    Parentheses p;
+    // WHEN
+    for(auto currentCase : inputMixedTypeNegative){
+        auto result = p.isBalanced(currentCase);
+    // THEN
+        ASSERT_FALSE(result);
+    }
+}
+
+TEST(ParenthesesTests, givenImplicateBracketWhenIsBalancedIsCalledThenResultIsTrue)
+{
+    // GIVEN
+    std::vector <std::string> inputTrueImplicateBracket{"({})", "(<>)","({<>})"};
+    Parentheses p;
+   // WHEN
+    for(auto currentCase : inputTrueImplicateBracket){
+        auto result = p.isBalanced(currentCase);
+    // THEN
+        ASSERT_TRUE(result);
+    }
+}
+
+TEST(ParenthesesTests, givenImplicateBracketWhenIsBalancedIsCalledThenResultIsFalse)
+{
+    // GIVEN
+    std::vector <std::string> inputFalsemplicateBracket{"({]}", "((>]","(<[})>"};
+    Parentheses p;
+    // WHEN
+    for(auto currentCase : inputFalsemplicateBracket){
+        auto result = p.isBalanced(currentCase);
+    // THEN
+        ASSERT_FALSE(result);
+    }    
+
 }
