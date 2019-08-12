@@ -1,16 +1,32 @@
 #include "Parentheses.hpp"
+#include "stack"
 
 bool Parentheses::isBalanced(std::string s) {
-    if((s.size() % 2) != 0)	    
-        return false;
-    else if(s.front() == ')' or s.front() == ']' or s.front() == '}') 
-	return false;
-    else if((s.front() == '(') and (s.back() != ')'))
-	return false;
-    else if((s.front() == '[') and (s.back() != ']'))
-	return false;
-    else if((s.front() == '{') and (s.back() != '}'))
-	return false;
-    else
-        return true;
+
+    std::stack<char> stos{};
+    
+    for(auto el:s) {
+        if(stos.size() >= 1) {
+            if (el == ')') {
+                if(stos.top() == '(')
+                    stos.pop();
+            }
+            else if (el == '}') {
+                if(stos.top() == '{')
+                    stos.pop();
+            }
+            else if (el == ']') {
+                if(stos.top() == '[')
+                    stos.pop();
+            }
+            else {
+                stos.push(el); 
+            }        
+        }
+        else {
+            stos.push(el); 
+        }            
+    }
+
+    return stos.empty();
 }
