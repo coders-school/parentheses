@@ -1,7 +1,7 @@
 #include "Parentheses.hpp"
 
 bool Parentheses::isBalanced(std::string s) {
-    if(s.size()==2 or s.empty()) return true;
+    if(s.size()%2==0 or s.empty()) return true;
     else false;
     
     // if (s.empty()) return true;
