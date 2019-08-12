@@ -3,7 +3,13 @@
 bool Parentheses::isBalanced(std::string s) {
     if((s.size() % 2) != 0)	    
         return false;
-    else if(s.front() == ')' or s.front() == ']' or s.front() == '}')
+    else if(s.front() == ')' or s.front() == ']' or s.front() == '}') 
+	return false;
+    else if((s.front() == '(') and (s.back() != ')'))
+	return false;
+    else if((s.front() == '[') and (s.back() != ']'))
+	return false;
+    else if((s.front() == '{') and (s.back() != '}'))
 	return false;
     else
         return true;
