@@ -19,11 +19,11 @@ bool Parentheses::isBalanced(std::string stringInput) {
 
         if(*strItr==')' or *strItr==']' or *strItr=='}')
         {
-            auto mapstrItrr = bracketsMap.find(*strItr);
-            if(parenthesesContainer.empty() or mapstrItrr==bracketsMap.end())
+            auto mapItr = bracketsMap.find(*strItr);
+            if(parenthesesContainer.empty() or mapItr==bracketsMap.end())
                 return false;
             
-            if(mapstrItrr->second != parenthesesContainer.top())
+            if(mapItr->second != parenthesesContainer.top())
                 return false;
             else
                 parenthesesContainer.pop();    
