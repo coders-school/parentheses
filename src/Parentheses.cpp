@@ -1,40 +1,33 @@
 #include "Parentheses.hpp"
+#include <stack>
+#include <map>
+#include <iostream>
 
-bool Parentheses::isBalanced(std::string s) {
-    int nawias=0, kwadratowy=0, klamra=0;
-    for(auto it=s.begin(); it!=s.end(); ++it)
+bool Parentheses::isBalanced(std::string stringInput) {
+    std::map<char, char> bracketsMap =
     {
-        if(*it == '(') ++nawias;
-        if(*it == '[') ++kwadratowy;
-        if(*it == '{') ++klamra;
-        if(*it == ')') --nawias;
-        if(*it == ']') --kwadratowy;
-        if(*it == '}') --klamra;
+        {')', '('},
+        {']', '['},
+        {'}', '{'},
+    };
+    
+    std::stack<char> parenthesesContainer;
+    for(auto strItr=stringInput.begin(); strItr!=stringInput.end(); ++strItr)
+    {
+        if(*strItr=='(' or *strItr=='[' or *strItr=='{') 
+            parenthesesContainer.push(*strItr);
 
-        if(nawias<0 || klamra<0 || kwadratowy<0) return false;
+        if(*strItr==')' or *strItr==']' or *strItr=='}')
+        {
+            auto mapstrItrr = bracketsMap.find(*strItr);
+            if(parenthesesContainer.empty() or mapstrItrr==bracketsMap.end())
+                return false;
+            
+            if(mapstrItrr->second != parenthesesContainer.top())
+                return false;
+            else
+                parenthesesContainer.pop();    
+        } 
     }
-
-    if(nawias==0 && kwadratowy==0 && klamra==0) return true;
-    else return false;   
-    
-    // auto pos1 = s.find('(');
-    // auto pos2 = s.find(')');
-
-    // if(s.size()%2==0 or s.empty())
-    // {
-    //     if(s[++pos1] !=')') {
-    //         return false;
-    //     } 
-
-    //     return true;
-    // } 
-    // else {
-    //     return false;
-    // } ;
-
-    
-    // if (s.empty()) return true;
-    // bool open = s.find('(') != std::string::npos;
-    // bool close = s.find(')') != std::string::npos;
-    // return open && close;
+    return parenthesesContainer.empty();
 }
