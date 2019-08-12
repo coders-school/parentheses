@@ -81,13 +81,26 @@ TEST(ParenthesesTests, givenImplicateBracketWhenIsBalancedIsCalledThenResultIsTr
 TEST(ParenthesesTests, givenImplicateBracketWhenIsBalancedIsCalledThenResultIsFalse)
 {
     // GIVEN
-    std::vector <std::string> inputFalsemplicateBracket{"({]}", "((>]","(<[})>"};
+    std::vector <std::string> inputFalseImplicateBracket{"({]}", "((>]","(<[})>"};
     Parentheses p;
     // WHEN
-    for(auto currentCase : inputFalsemplicateBracket){
+    for(auto currentCase : inputFalseImplicateBracket){
         auto result = p.isBalanced(currentCase);
     // THEN
         ASSERT_FALSE(result);
-    }    
+    }
+}
+
+TEST(ParenthesesTests, givenSecondImplicateBracketWhenIsBalancedIsCalledThenResultIsFalse)
+{
+    // GIVEN
+    std::vector <std::string> inputFalseSecondImplicateBracket{"({)}", "([)]","[(])"};
+    Parentheses p;
+    // WHEN
+    for(auto currentCase : inputFalseSecondImplicateBracket){
+        auto result = p.isBalanced(currentCase);
+    // THEN
+        ASSERT_FALSE(result);
+    }        
 
 }
