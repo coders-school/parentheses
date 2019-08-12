@@ -11,23 +11,23 @@ bool Parentheses::isBalanced(std::string stringInput) {
         {'}', '{'},
     };
     
-    std::stack<char> parenthesesContainer;
+    std::stack<char> brackets;
     for(auto strItr=stringInput.begin(); strItr!=stringInput.end(); ++strItr)
     {
         if(*strItr=='(' or *strItr=='[' or *strItr=='{') 
-            parenthesesContainer.push(*strItr);
+            brackets.push(*strItr);
 
         if(*strItr==')' or *strItr==']' or *strItr=='}')
         {
             auto mapItr = bracketsMap.find(*strItr);
-            if(parenthesesContainer.empty() or mapItr==bracketsMap.end())
+            if(brackets.empty() or mapItr==bracketsMap.end())
                 return false;
             
-            if(mapItr->second != parenthesesContainer.top())
+            if(mapItr->second != brackets.top())
                 return false;
             else
-                parenthesesContainer.pop();    
+                brackets.pop();    
         } 
     }
-    return parenthesesContainer.empty();
+    return brackets.empty();
 }
