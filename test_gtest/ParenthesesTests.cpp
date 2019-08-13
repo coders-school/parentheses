@@ -28,4 +28,17 @@ TEST(ParenthesesTests, givenBracketsWhenIsBalancedIsCalledThenResultIsTrue)
     ASSERT_TRUE(result);
 }
 
+TEST(ParenthesesTests, givenSquareBracketsWhenIsBalancedIsCalledThenResultIsTrue)
+{
+    // GIVEN
+    std::string input = "[]";
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_TRUE(result);
+}
+
 
