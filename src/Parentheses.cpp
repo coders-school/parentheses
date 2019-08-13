@@ -2,7 +2,18 @@
 #include <stack>
 
 bool Parentheses::isBalanced(std::string s) {
-   
+   //all codes as comments except one
+
+	//NG
+	//code
+	
+	//Marcin Bury
+	//code
+
+	//piotr.kowandy
+	//code
+
+	//RyszardH
    std::stack < char > myStack;
    
    for(auto it = s.begin();it!=s.end();it++)
