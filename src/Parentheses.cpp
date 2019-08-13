@@ -4,7 +4,7 @@
 #include <algorithm>
 
 bool Parentheses::isBalanced(std::string s) {
-    
+		
 	std::stack < char > myStack;
    
     for(auto it = s.begin();it!=s.end();it++)
