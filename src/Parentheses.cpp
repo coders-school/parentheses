@@ -4,51 +4,53 @@
 #include <algorithm>
 
 bool Parentheses::isBalanced(std::string s) {
-    std::stack < char > myStack;
+    
+	std::stack < char > myStack;
    
     for(auto it = s.begin();it!=s.end();it++)
     {
-   		if(myStack.empty())
-      	{
+		if(myStack.empty())
+		{
 			myStack.push(*it);
 			continue;
-		} 
+		}
 		else if(myStack.top()=='(')
 		{
-        	if((*it)!=')') 
-        	{
-            	myStack.push(*it);
-        	}else
-        	{
-            	myStack.pop();
-        	}
+			if((*it)!=')') 
+			{
+				myStack.push(*it);
+			}else
+			{
+				myStack.pop();
+			}
 		}
 		else if(myStack.top()=='[')
-       	{
-        	if((*it)!=']') 
-        	{
-            	myStack.push(*it);
-        	}else
-        	{
-            	myStack.pop();
-         	}
+		{
+			if((*it)!=']') 
+			{
+				myStack.push(*it);
+			}else
+			{
+				myStack.pop();
+			}
 		}
 		else if(myStack.top()=='{')
-       	{
-        	if((*it)!='}') 
-        	{
-            	myStack.push(*it);
-        	}else
-        	{
-            	myStack.pop();
-        	}
+		{
+			if((*it)!='}') 
+			{
+				myStack.push(*it);
+			}
+			else
+			{
+				myStack.pop();
+			}
 		}
-    }
-    if(myStack.empty())
+	}
+	if(myStack.empty())
 	{
 		return true;
 	}
-    else
+	else
 	{
 		return false;
 	}
