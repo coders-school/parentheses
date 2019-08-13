@@ -1,5 +1,29 @@
 #include "Parentheses.hpp"
+#include "stack"
 
 bool Parentheses::isBalanced(std::string s) {
-    return true;
+
+    std::stack<char> stos{};
+    
+    for(auto el:s) {
+        if(stos.size() >= 1) {
+            if ((el == ')') and (stos.top() == '(')) {
+                    stos.pop();
+            }
+            else if ((el == '}') and (stos.top() == '{')) {
+                    stos.pop();
+            }
+            else if ((el == ']') and (stos.top() == '[')) {
+                    stos.pop();
+            }
+            else {
+                stos.push(el); 
+            }        
+        }
+        else {
+            stos.push(el); 
+        }            
+    }
+
+    return stos.empty();
 }

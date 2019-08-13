@@ -17,4 +17,199 @@ SCENARIO("Parentheses", "[Parentheses]") {
             }
         }
     }
+
+    GIVEN("Parentheses, () input string") {
+        std::string input{"()"};
+        Parentheses p;
+
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+
+            THEN("The result is true") {
+                CHECK(result == true);
+            }
+        }
+    }
+
+    GIVEN("Parentheses, [] input string") {
+        std::string input{"[]"};
+        Parentheses p;
+
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+
+            THEN("The result is true") {
+                CHECK(result == true);
+            }
+        }
+    }
+
+    GIVEN("Parentheses, {} input string") {
+        std::string input{"{}"};
+        Parentheses p;
+                                               
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+                                               
+            THEN("The result is true") {
+                CHECK(result == true);
+            }
+        }
+    }
+
+    GIVEN("Parentheses, ( input string") {
+        std::string input{"("};
+        Parentheses p;
+                                               
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+                                               
+            THEN("The result is false") {
+                CHECK(result == false);
+            }
+        }
+    }
+
+    GIVEN("Parentheses, ( input string") {
+        std::string input{"["};
+        Parentheses p;
+                                               
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+                                               
+            THEN("The result is false") {
+                CHECK(result == false);
+            }
+        }
+    }
+
+
+    GIVEN("Parentheses, (){[]} input string") {
+        std::string input{"(){[]}"};
+        Parentheses p;
+                                               
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+                                               
+            THEN("The result is true") {
+                CHECK(result == true);
+            }
+        }
+    }
+
+
+
+    GIVEN("Parentheses, ( input string") {
+        std::string input{"{"};
+        Parentheses p;
+                                               
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+                                               
+            THEN("The result is false") {
+                CHECK(result == false);
+            }
+        }
+    }
+
+
+    GIVEN("Parentheses, )(  input string") {
+        std::string input{")("};
+        Parentheses p;
+
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+
+            THEN("The result is false") {
+                CHECK(result == false);
+            }
+        }
+    }
+
+    GIVEN("Parentheses, ][ input string") {
+        std::string input{"]["};
+        Parentheses p;
+
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+
+            THEN("The result is false") {
+                CHECK(result == false);
+            }
+        }
+    }
+
+    GIVEN("Parentheses, }{ input string") {
+        std::string input{"}{"};
+        Parentheses p;
+
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+
+            THEN("The result is false") {
+                CHECK(result == false);
+            }
+        }
+    }
+
+    GIVEN("Parentheses, [(]) input string") {
+        std::string input{"[(])"};
+        Parentheses p;
+
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+
+            THEN("The result is false") {
+                CHECK(result == false);
+            }
+        }
+    }
+
+
+    GIVEN("Parentheses, [{](}) input string") {    
+         std::string input{"[{](})"};
+         Parentheses p;
+                                                
+         WHEN("isBalanced() is called") {
+             auto result = p.isBalanced(input);
+                                                
+             THEN("The result is false") {
+                 CHECK(result == false);
+             }
+         }
+     }
+
+
+    GIVEN("Parentheses, (){[]} input string") {
+        std::string input{"([){[]}]"};
+        Parentheses p;
+                                               
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+                                               
+            THEN("The result is false") {
+                CHECK(result == false);
+            }
+        }
+    }
+
+
+    GIVEN("Parentheses, ()[]{} input string") {
+        std::string input{"()[]{}"};
+        Parentheses p;
+                                               
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+                                               
+            THEN("The result is true") {
+                CHECK(result == true);
+            }
+        }
+    }
+
+
+
+
+
+
 }
