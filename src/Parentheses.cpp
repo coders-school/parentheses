@@ -1,34 +1,33 @@
 #include <map>
+#include <stack>
 #include "Parentheses.hpp"
 
 
-
 bool Parentheses::isBalanced(std::string s) {
-    if (s[0] == ')' or s[0] == '}' or s[0] == ']')
-        return false;
-
-    std::map<char, int> charCounter = {
-            {'(', 0},
-            {')', 0},
-            {'{', 0},
-            {'}', 0},
-            {'[', 0},
-            {']', 0}
-    };
+   std::stack <char> checkingStack ;
 
     for (auto letter : s) {
-        if (charCounter.find(letter) != charCounter.end()) {
-            charCounter[letter] += 1;
-
-            if (charCounter['{'] < charCounter['}'])
-                return false;
-            if (charCounter['['] < charCounter[']'])
-                return false;
-            if (charCounter['('] < charCounter[')'])
-                return false;
+        if(checkingStack.empty()){
+            if (letter == '(' or letter =='{' or letter == '[' or letter == '<')
+                checkingStack.push(letter);
+            else if (letter == ' ');
+            else return false;
         }
-    }
-
-
-    return true;
+        else{
+            if (letter == '(' or letter =='{' or letter == '[' or letter == '<')
+                checkingStack.push(letter);
+            else if (letter == ')' and checkingStack.top() == '(')
+                checkingStack.pop();
+            else if (letter == '}' and checkingStack.top() == '{')
+                checkingStack.pop();
+            else if (letter == '>' and checkingStack.top() == '<')
+                checkingStack.pop(); 
+            else if (letter == ']' and checkingStack.top() == '[')
+                checkingStack.pop();           
+            else if (letter == ' ')
+                continue;
+            else return false;
+        }
+}
+    return checkingStack.empty();
 }
