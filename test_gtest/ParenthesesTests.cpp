@@ -218,6 +218,57 @@ TEST(ParenthesesTests, givenString17WhenIsBalancedIsCalledThenResultIsTrue)
     // THEN
     ASSERT_TRUE(result);
 }
+TEST(ParenthesesTests, givenString17_1WhenIsBalancedIsCalledThenResultIsTrue)
+{
+    // GIVEN
+    std::string input{"{{([])}{(())}}"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_TRUE(result);
+}
+TEST(ParenthesesTests, givenString17_2WhenIsBalancedIsCalledThenResultIsTrue)
+{
+    // GIVEN
+    std::string input{"{{([])}{(({{()}}))}}"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_TRUE(result);
+}
+TEST(ParenthesesTests, givenString17_3WhenIsBalancedIsCalledThenResultIsTrue)
+{
+    // GIVEN
+    std::string input{"{{([])}{(({{({{}})}}))}}"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_TRUE(result);
+}
+TEST(ParenthesesTests, givenString17_4WhenIsBalancedIsCalledThenResultIsTrue)
+{
+    // GIVEN
+    std::string input{"{{([])}{({{}}({{({{}})}}))}}"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_TRUE(result);
+}
+
+//Bad 
+
 TEST(ParenthesesTests, givenString18WhenIsBalancedIsCalledThenResultIsFalse)
 {
     // GIVEN
@@ -474,6 +525,78 @@ TEST(ParenthesesTests, givenString39WhenIsBalancedIsCalledThenResultIsFalse)
 {
     // GIVEN
     std::string input{"([{()}]])]{}()["};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+TEST(ParenthesesTests, givenString40WhenIsBalancedIsCalledThenResultIsFalse)
+{
+    // GIVEN
+    std::string input{"{{{}}"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+TEST(ParenthesesTests, givenString42WhenIsBalancedIsCalledThenResultIsFalse)
+{
+    // GIVEN
+    std::string input{"{(){()})}})"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+TEST(ParenthesesTests, givenString43WhenIsBalancedIsCalledThenResultIsFalse)
+{
+    // GIVEN
+    std::string input{"{())}}{}"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+TEST(ParenthesesTests, givenString44WhenIsBalancedIsCalledThenResultIsFalse)
+{
+    // GIVEN
+    std::string input{"{()())}}"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+TEST(ParenthesesTests, givenString45WhenIsBalancedIsCalledThenResultIsFalse)
+{
+    // GIVEN
+    std::string input{"{(){})}}"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+TEST(ParenthesesTests, givenString46WhenIsBalancedIsCalledThenResultIsFalse)
+{
+    // GIVEN
+    std::string input{"{())}}"};
     Parentheses p;
 
     // WHEN
