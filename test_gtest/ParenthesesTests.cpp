@@ -55,5 +55,41 @@ TEST(ParenthesesTests, givenCurlyBracketsWhenIsBalancedIsCalledThenResultIsTrue)
 }
 
 
+TEST(ParenthesesTests, givenSingleRoundBracket_WhenIsBalancedIsCalled_ThenResultIsFalse)
+{
+    // GIVEN
+    std::string input = "(";
+    Parentheses p;
 
+    // WHEN
+     auto result = p.isBalanced(input);
 
+    // THEN
+    ASSERT_FALSE(result);
+}
+
+TEST(ParenthesesTests, givenClosedRoundAndSquareBrackets_WhenIsBalancedIsCalled_ThenResultIsTrue)
+{
+    // GIVEN
+    std::string input = "()[]";
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_TRUE(result);
+}
+
+TEST(ParenthesesTests, givenNotClosedRoundBrackets_WhenIsBalancedIsCalled_ThenResultIsFalse)
+{
+    // GIVEN
+    std::string input = ")(";
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
