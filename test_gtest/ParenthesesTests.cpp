@@ -120,3 +120,16 @@ TEST(ParenthesesTests, givenTwoPairsOfRoundBracketsInTwoPairsOfSquaredBracketsIn
     ASSERT_TRUE(result);
 }
 
+TEST(ParenthesesTests, givenNotClosedRoundBracketsInTwoPairsOfCurlyBrackets_WhenIsBalancedIsCalled_ThenResultIsFalse)
+{
+    // GIVEN
+    std::string input = "{{)(}}";
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+
