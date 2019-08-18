@@ -107,3 +107,16 @@ TEST(ParenthesesTests, givenIntertwinedSquareAndRoundBrackets_WhenIsBalancedIsCa
     ASSERT_FALSE(result);
 }
 
+TEST(ParenthesesTests, givenTwoPairsOfRoundBracketsInTwoPairsOfSquaredBracketsInTwoPairsOfCurlyBrackets_WhenIsBalancedIsCalled_ThenResultIsTrue)
+{
+    // GIVEN
+    std::string input = "{{[[(())]]}}";
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_TRUE(result);
+}
+
