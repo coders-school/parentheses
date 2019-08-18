@@ -1,6 +1,7 @@
 #include "Parentheses.hpp"
 #include <stack>
 #include <map>
+#include <algorithm>
 #include <iostream>
 
 bool Parentheses::isBalanced(std::string stringInput) {
@@ -22,11 +23,18 @@ bool Parentheses::isBalanced(std::string stringInput) {
             continue;
         }
 
-        if(brackets.empty() or strItrd != bracketsMap[brackets.top()]) {
-            return false;
+        auto prediction = [&strItrd](const auto element){ return element.second == strItrd;};
+
+        if(std::find_if(bracketsMap.begin(), bracketsMap.end(), prediction) != bracketsMap.end())
+        {
+            if(brackets.empty() or strItrd != bracketsMap[brackets.top()]) {
+                return false;
+            }
+
+            brackets.pop();
         }
 
-        brackets.pop();
+        
         
     }
     return brackets.empty();
