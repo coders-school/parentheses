@@ -186,4 +186,17 @@ SCENARIO("Parentheses", "[Parentheses]") {
             }
         }
     }
+
+    GIVEN("Parentheses, {[(asd)]} input string") {
+        std::string input = "{[(asd)]}";
+        Parentheses p;
+
+        WHEN("isBalanced() is called") {
+            auto result = p.isBalanced(input);
+
+            THEN("The result is true") {
+                CHECK(result == true);
+            }
+        }
+    }
 }
