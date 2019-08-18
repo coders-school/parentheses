@@ -184,3 +184,16 @@ TEST(ParenthesesTests, givenParenthesisEnclosedInCurlyBracketsAndCurlyBracketsEn
     // THEN
     ASSERT_TRUE(result);
 }
+
+TEST(ParenthesesTests, givenTextEnclosedInRoundSquaredCurlyBrackets_WhenIsBalancedIsCalled_ThenResultIsTrue)
+{
+    // GIVEN
+    std::string input = "{[(asd)]}";
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_TRUE(result);
+}
