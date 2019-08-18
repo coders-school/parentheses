@@ -6,28 +6,28 @@
 bool Parentheses::isBalanced(std::string stringInput) {
     std::map<char, char> bracketsMap =
     {
-        {')', '('},
-        {']', '['},
-        {'}', '{'},
+        {'(', ')'},
+        {'[', ']'},
+        {'{', '}'},
     };
     
     std::stack<char> brackets;
     for(auto strItr=stringInput.begin(); strItr!=stringInput.end(); ++strItr)
     {
-        if(*strItr=='(' or *strItr=='[' or *strItr=='{') 
-            brackets.push(*strItr);
+        auto strItrd = *strItr;
+        auto mapItr = bracketsMap.find(strItrd);
 
-        if(*strItr==')' or *strItr==']' or *strItr=='}')
-        {
-            auto mapItr = bracketsMap.find(*strItr);
-            if(brackets.empty() or mapItr==bracketsMap.end())
-                return false;
-            
-            if(mapItr->second != brackets.top())
-                return false;
-            else
-                brackets.pop();    
-        } 
+        if(mapItr != bracketsMap.end()) {
+            brackets.push(strItrd);
+            continue;
+        }
+
+        if(brackets.empty() or strItrd != bracketsMap[brackets.top()]) {
+            return false;
+        }
+
+        brackets.pop();
+        
     }
     return brackets.empty();
 }
