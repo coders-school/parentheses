@@ -1,57 +1,31 @@
 #include "Parentheses.hpp"
 #include <stack>
-#include <vector>
-#include <algorithm>
 
 bool Parentheses::isBalanced(std::string s) {
-		
-	std::stack < char > myStack;
-   
-    for(auto it = s.begin();it!=s.end();it++)
-    {
-		if(myStack.empty())
-		{
-			myStack.push(*it);
-			continue;
-		}
-		else if(myStack.top()=='(')
-		{
-			if((*it)!=')') 
-			{
-				myStack.push(*it);
-			}else
-			{
-				myStack.pop();
-			}
-		}
-		else if(myStack.top()=='[')
-		{
-			if((*it)!=']') 
-			{
-				myStack.push(*it);
-			}else
-			{
-				myStack.pop();
-			}
-		}
-		else if(myStack.top()=='{')
-		{
-			if((*it)!='}') 
-			{
-				myStack.push(*it);
-			}
-			else
-			{
-				myStack.pop();
-			}
-		}
-	}
-	if(myStack.empty())
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+
+int i = 0;
+std::stack<char> ParenthesesStack{};
+
+for(auto p = s.begin() ; i < s.size() ; p++, i++) {
+    if(ParenthesesStack.size() > 0) {
+        if (*p == '}') {
+            if(ParenthesesStack.top() == '{')
+                ParenthesesStack.pop();
+        }
+        else if (*p == ')') {
+            if(ParenthesesStack.top() == '(')
+                ParenthesesStack.pop();
+        }
+        else if (*p == ']') {
+            if(ParenthesesStack.top() == '[')
+                ParenthesesStack.pop();
+        }
+        else
+            ParenthesesStack.push(*p);
+    }
+    else
+        ParenthesesStack.push(*p);
+}
+
+return ParenthesesStack.empty();
 }
