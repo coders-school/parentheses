@@ -93,3 +93,17 @@ TEST(ParenthesesTests, givenNotClosedRoundBrackets_WhenIsBalancedIsCalled_ThenRe
     // THEN
     ASSERT_FALSE(result);
 }
+
+TEST(ParenthesesTests, givenIntertwinedSquareAndRoundBrackets_WhenIsBalancedIsCalled_ThenResultIsFalse)
+{
+    // GIVEN
+    std::string input = "[(])";
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+
