@@ -53,3 +53,16 @@ TEST(ParenthesesTests, givenOtherVariant1)
     // THEN
     ASSERT_FALSE(result);
 }
+
+TEST(ParenthesesTests, givenOtherVariant2)
+{
+    // GIVEN
+    std::string input{"{}"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_TRUE(result);
+}
