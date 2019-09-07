@@ -54,6 +54,45 @@ TEST(ParenthesesTests, givenCorrectTwoParentheses3)
     ASSERT_TRUE(result);
 }
 
+TEST(ParenthesesTests, givenUncorrectTwoParentheses1)
+{
+    // GIVEN
+    std::string input{")("};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+
+TEST(ParenthesesTests, givenUncorrectTwoParentheses2)
+{
+    // GIVEN
+    std::string input{"}{"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+
+TEST(ParenthesesTests, givenUncorrectTwoParentheses3)
+{
+    // GIVEN
+    std::string input{"]["};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+
 TEST(ParenthesesTests, givenOnlyOpenParenthese1)
 {
     // GIVEN
