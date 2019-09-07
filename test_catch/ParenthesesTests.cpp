@@ -70,7 +70,7 @@ SCENARIO("Parentheses", "[Parentheses]") {
         }
     }
 
-    GIVEN("Parentheses, ( input string") {
+    GIVEN("Parentheses, [ input string") {
         std::string input{"["};
         Parentheses p;
                                                
@@ -99,7 +99,7 @@ SCENARIO("Parentheses", "[Parentheses]") {
 
 
 
-    GIVEN("Parentheses, ( input string") {
+    GIVEN("Parentheses, { input string") {
         std::string input{"{"};
         Parentheses p;
                                                
@@ -180,7 +180,7 @@ SCENARIO("Parentheses", "[Parentheses]") {
      }
 
 
-    GIVEN("Parentheses, (){[]} input string") {
+    GIVEN("Parentheses, ([){[]}] input string") {
         std::string input{"([){[]}]"};
         Parentheses p;
                                                
@@ -206,10 +206,4 @@ SCENARIO("Parentheses", "[Parentheses]") {
             }
         }
     }
-
-
-
-
-
-
 }
