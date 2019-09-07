@@ -1,12 +1,14 @@
 #include <gtest/gtest.h>
 #include "Parentheses.hpp"
 
+struct ParenthesesTests : public testing::Test {
+    Parentheses p;
+};
 
-TEST(ParenthesesTests, givenEmptyString)
+TEST_F(ParenthesesTests, givenEmptyString)
 {
     // GIVEN
     std::string input{};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -15,11 +17,10 @@ TEST(ParenthesesTests, givenEmptyString)
     ASSERT_TRUE(result);
 }
 
-TEST(ParenthesesTests, givenCorrectTwoParentheses1)
+TEST_F(ParenthesesTests, givenCorrectTwoParentheses1)
 {
     // GIVEN
     std::string input{"()"};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -28,11 +29,10 @@ TEST(ParenthesesTests, givenCorrectTwoParentheses1)
     ASSERT_TRUE(result);
 }
 
-TEST(ParenthesesTests, givenCorrectTwoParentheses2)
+TEST_F(ParenthesesTests, givenCorrectTwoParentheses2)
 {
     // GIVEN
     std::string input{"{}"};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -41,11 +41,10 @@ TEST(ParenthesesTests, givenCorrectTwoParentheses2)
     ASSERT_TRUE(result);
 }
 
-TEST(ParenthesesTests, givenCorrectTwoParentheses3)
+TEST_F(ParenthesesTests, givenCorrectTwoParentheses3)
 {
     // GIVEN
     std::string input{"[]"};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -54,11 +53,10 @@ TEST(ParenthesesTests, givenCorrectTwoParentheses3)
     ASSERT_TRUE(result);
 }
 
-TEST(ParenthesesTests, givenUncorrectTwoParentheses1)
+TEST_F(ParenthesesTests, givenUncorrectTwoParentheses1)
 {
     // GIVEN
     std::string input{")("};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -67,11 +65,10 @@ TEST(ParenthesesTests, givenUncorrectTwoParentheses1)
     ASSERT_FALSE(result);
 }
 
-TEST(ParenthesesTests, givenUncorrectTwoParentheses2)
+TEST_F(ParenthesesTests, givenUncorrectTwoParentheses2)
 {
     // GIVEN
     std::string input{"}{"};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -80,11 +77,10 @@ TEST(ParenthesesTests, givenUncorrectTwoParentheses2)
     ASSERT_FALSE(result);
 }
 
-TEST(ParenthesesTests, givenUncorrectTwoParentheses3)
+TEST_F(ParenthesesTests, givenUncorrectTwoParentheses3)
 {
     // GIVEN
     std::string input{"]["};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -93,11 +89,10 @@ TEST(ParenthesesTests, givenUncorrectTwoParentheses3)
     ASSERT_FALSE(result);
 }
 
-TEST(ParenthesesTests, givenOnlyOpenParenthese1)
+TEST_F(ParenthesesTests, givenOnlyOpenParenthese1)
 {
     // GIVEN
     std::string input{"("};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -106,11 +101,10 @@ TEST(ParenthesesTests, givenOnlyOpenParenthese1)
     ASSERT_FALSE(result);
 }
 
-TEST(ParenthesesTests, givenOnlyOpenParenthese2)
+TEST_F(ParenthesesTests, givenOnlyOpenParenthese2)
 {
     // GIVEN
     std::string input{"{"};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -119,11 +113,10 @@ TEST(ParenthesesTests, givenOnlyOpenParenthese2)
     ASSERT_FALSE(result);
 }
 
-TEST(ParenthesesTests, givenOnlyOpenParenthese3)
+TEST_F(ParenthesesTests, givenOnlyOpenParenthese3)
 {
     // GIVEN
     std::string input{"["};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -132,11 +125,10 @@ TEST(ParenthesesTests, givenOnlyOpenParenthese3)
     ASSERT_FALSE(result);
 }
 
-TEST(ParenthesesTests, givenOnlyClosedParenthese1)
+TEST_F(ParenthesesTests, givenOnlyClosedParenthese1)
 {
     // GIVEN
     std::string input{")"};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -145,11 +137,10 @@ TEST(ParenthesesTests, givenOnlyClosedParenthese1)
     ASSERT_FALSE(result);
 }
 
-TEST(ParenthesesTests, givenOnlyClosedParenthese2)
+TEST_F(ParenthesesTests, givenOnlyClosedParenthese2)
 {
     // GIVEN
     std::string input{"]"};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -158,11 +149,10 @@ TEST(ParenthesesTests, givenOnlyClosedParenthese2)
     ASSERT_FALSE(result);
 }
 
-TEST(ParenthesesTests, givenOnlyClosedParenthese3)
+TEST_F(ParenthesesTests, givenOnlyClosedParenthese3)
 {
     // GIVEN
     std::string input{"}"};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -171,11 +161,10 @@ TEST(ParenthesesTests, givenOnlyClosedParenthese3)
     ASSERT_FALSE(result);
 }
 
-TEST(ParenthesesTests, givenNotBalancedVariant1)
+TEST_F(ParenthesesTests, givenNotBalancedVariant1)
 {
     // GIVEN
     std::string input{"[{]}"};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -184,11 +173,10 @@ TEST(ParenthesesTests, givenNotBalancedVariant1)
     ASSERT_FALSE(result);
 }
 
-TEST(ParenthesesTests, givenNotBalancedVariant2)
+TEST_F(ParenthesesTests, givenNotBalancedVariant2)
 {
     // GIVEN
     std::string input{"{{)(}}"};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -197,11 +185,10 @@ TEST(ParenthesesTests, givenNotBalancedVariant2)
     ASSERT_FALSE(result);
 }
 
-TEST(ParenthesesTests, givenBalancedVariant1)
+TEST_F(ParenthesesTests, givenBalancedVariant1)
 {
     // GIVEN
     std::string input{"[({})]"};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -210,11 +197,10 @@ TEST(ParenthesesTests, givenBalancedVariant1)
     ASSERT_TRUE(result);
 }
 
-TEST(ParenthesesTests, givenBalancedVariant2)
+TEST_F(ParenthesesTests, givenBalancedVariant2)
 {
     // GIVEN
     std::string input{"{()}[[{}]]"};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
@@ -223,11 +209,10 @@ TEST(ParenthesesTests, givenBalancedVariant2)
     ASSERT_TRUE(result);
 }
 
-TEST(ParenthesesTests, givenBalancedVariant3)
+TEST_F(ParenthesesTests, givenBalancedVariant3)
 {
     // GIVEN
     std::string input{"()[]{}"};
-    Parentheses p;
 
     // WHEN
      auto result = p.isBalanced(input);
