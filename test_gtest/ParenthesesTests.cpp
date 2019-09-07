@@ -2,7 +2,7 @@
 #include "Parentheses.hpp"
 
 
-TEST(ParenthesesTests, givenEmptyStringWhenIsBalancedIsCalledThenResultIsTrue)
+TEST(ParenthesesTests, givenEmptyString)
 {
     // GIVEN
     std::string input{};
@@ -15,7 +15,7 @@ TEST(ParenthesesTests, givenEmptyStringWhenIsBalancedIsCalledThenResultIsTrue)
     ASSERT_TRUE(result);
 }
 
-TEST(ParenthesesTests, givenCorrectTwoParentheses)
+TEST(ParenthesesTests, givenCorrectTwoParentheses1)
 {
     // GIVEN
     std::string input{"()"};
@@ -28,10 +28,101 @@ TEST(ParenthesesTests, givenCorrectTwoParentheses)
     ASSERT_TRUE(result);
 }
 
-TEST(ParenthesesTests, givenOnlyOpenParentheses)
+TEST(ParenthesesTests, givenCorrectTwoParentheses2)
+{
+    // GIVEN
+    std::string input{"{}"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_TRUE(result);
+}
+
+TEST(ParenthesesTests, givenCorrectTwoParentheses3)
+{
+    // GIVEN
+    std::string input{"[]"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_TRUE(result);
+}
+
+TEST(ParenthesesTests, givenOnlyOpenParenthese1)
 {
     // GIVEN
     std::string input{"("};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+
+TEST(ParenthesesTests, givenOnlyOpenParenthese2)
+{
+    // GIVEN
+    std::string input{"{"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+
+TEST(ParenthesesTests, givenOnlyOpenParenthese3)
+{
+    // GIVEN
+    std::string input{"["};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+
+TEST(ParenthesesTests, givenOnlyClosedParenthese1)
+{
+    // GIVEN
+    std::string input{")"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+
+TEST(ParenthesesTests, givenOnlyClosedParenthese2)
+{
+    // GIVEN
+    std::string input{"]"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+
+TEST(ParenthesesTests, givenOnlyClosedParenthese3)
+{
+    // GIVEN
+    std::string input{"}"};
     Parentheses p;
 
     // WHEN
