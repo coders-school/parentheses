@@ -132,7 +132,7 @@ TEST(ParenthesesTests, givenOnlyClosedParenthese3)
     ASSERT_FALSE(result);
 }
 
-TEST(ParenthesesTests, givenOtherVariant1)
+TEST(ParenthesesTests, givenNotBalancedVariant1)
 {
     // GIVEN
     std::string input{"[{]}"};
@@ -145,10 +145,49 @@ TEST(ParenthesesTests, givenOtherVariant1)
     ASSERT_FALSE(result);
 }
 
-TEST(ParenthesesTests, givenOtherVariant2)
+TEST(ParenthesesTests, givenNotBalancedVariant2)
 {
     // GIVEN
-    std::string input{"{}"};
+    std::string input{"{{)(}}"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_FALSE(result);
+}
+
+TEST(ParenthesesTests, givenBalancedVariant1)
+{
+    // GIVEN
+    std::string input{"[({})]"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_TRUE(result);
+}
+
+TEST(ParenthesesTests, givenBalancedVariant2)
+{
+    // GIVEN
+    std::string input{"{()}[[{}]]"};
+    Parentheses p;
+
+    // WHEN
+     auto result = p.isBalanced(input);
+
+    // THEN
+    ASSERT_TRUE(result);
+}
+
+TEST(ParenthesesTests, givenBalancedVariant3)
+{
+    // GIVEN
+    std::string input{"()[]{}"};
     Parentheses p;
 
     // WHEN
