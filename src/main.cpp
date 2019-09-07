@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../inc/Parentheses.hpp"
+#include "Parentheses.hpp"
 
 int main()
 {
